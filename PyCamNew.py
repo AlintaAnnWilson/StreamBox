@@ -41,10 +41,6 @@ def ConvertVideo():
     exit()
 
 
-def RenameFile():
-    os.renames("outputfile.mp4" "gdrive/%s.mp4" %DateFilename)
-
-
 def DeleteTempFiles():
     os.remove("video.h264")
     os.remove("outputfile.mp4")
@@ -93,8 +89,9 @@ if __name__ == "__main__":   #start of the program?
 
 #Use code 89 in case 90 fails.
 #VideoConvert = "ffmpeg -r 30 -i video.h264 -vcodec copy outputfile.mp4"
-DateFilename=strftime("%Y-%m-%d %H:%M", gmtime())
+DateFilename=strftime("%Y-%m-%d %H.%M", gmtime())
 VideoConvert = "ffmpeg -r 30 -i video.h264 -vcodec copy %s.mp4" %DateFilename
+alsarec = "code to record audio"
 camera = picamera.PiCamera()
 
 SLed = 5
@@ -120,7 +117,7 @@ GPIO.setup(Button2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 #Progrm starts here:
 while True:
     if (GPIO.input(Button1)):
-        
+
 
 
 
